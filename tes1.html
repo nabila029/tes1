@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For you❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --pink: #ffb6c1;
+            --deep-pink: #ff69b4;
+            --rose: #ffe4e1;
+            --pastel-purple: #c8a2c8;
+            --soft-yellow: #fffacd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--rose);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(var(--deep-pink) 1px, transparent 1px),
+                radial-gradient(var(--deep-pink) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--deep-pink);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cat-meme {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cat-meme img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .message-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .emoji-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cake {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 80px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .music-player {
+            background-color: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin: 20px auto;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .music-info span {
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--deep-pink);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .scroll-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+
+        .keepsake {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px dashed var(--deep-pink);
+            text-align: center;
+        }
+
+        .rose-decoration {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: var(--deep-pink);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cat-meme {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Heart animation */
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: heart-float 4s ease-in forwards;
+            font-size: 20px;
+            color: var(--deep-pink);
+            opacity: 0;
+        }
+
+        @keyframes heart-float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        .keyboard-emoticons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <div class="container">
+        <div class="scroll-section">
+            <div class="header">
+                <h1>Happy Birthday!</h1>
+                <div class="cat-meme">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d0d37a1e-e327-4593-bfad-c337a4ee622d.png" alt="Cartoon cat with heart eyes holding a birthday cake vector illustration" />
+                </div>
+            </div>
+
+            <div class="message-container">
+                <p class="message">Selamat ulang tahun buat kamu yang paling spesial! aku ga bisa bikin banyak&cuman bisa bikin web ini,semoga km suka ya ❤️</p>
+                
+                <div class="keyboard-emoticons">
+                    <span>(˶ᵔ ᵕ ᵔ˶)</span>
+                    <span>ฅ^•ﻌ•^ฅ</span>
+                    <span>(っ´▽｀)っ</span>
+                    <span>(✧ω✧)</span>
+                    <span>(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span>
+                </div>
+
+                <p class="message">Semoga dapet cepet dapet job buat ke jepang ✨💓</p>
+                
+                <div class="cake">🎂</div>
+                
+                <div class="music-player">
+                    <div class="music-info">
+                        <div class="play-btn" id="play-btn">▶</div>
+                        <span>Tulus - Monokrom</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="message-container">
+                <h2>Aku gatau mau ngomong apa weh TwT...</h2>
+                <p class="emoji-text">
+                    🌸 lopyu:v<br>
+                    🌸 Semoga kita bisa cepet ketemu lagi yaaa...<br>
+                    🌸 Jangan terlalu cuek dong:( <br>
+                    🌸 mweheheehehehehe<br>
+                    🌸 Tetep jaga kesehatann yaaa jangan lupa olahraga ringan ajaaaaaaa ongkehhh?<br>
+                </p>
+                
+                <div class="keepsake">
+                    "No matter how far you go,don’t forget you’ve got someone cheering for you"
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="message-container">
+                <h2>For you <3 </h2>
+                <p class="message">
+                   You might be quiet<br> 
+                   But I see how hard you fight,how big you dream<br> 
+                   how you wanna go to Japan someday and make it real.<br> 
+                   I’m so proud of you,seriously.<br> 
+                    </p>
+                   Even if we’re not side by side all the time<br> 
+                   I still hold on to what we promised each other.<br> 
+                   I’ll always root for you,no matter where you go.<br> 
+                    </p>
+                   I just hope this year brings you courage<br> 
+                   good chances,and people who see you<br> 
+                   the way you deserve to be seen.<br> 
+                    </p>
+                   I’m here,cheering you on<br> 
+                   and I’ll keep being here,okay?<br> 
+                   Happy birthday Once again.🌸<br>  
+                </p>
+                
+                <div class="cat-meme" style="width: 80px; height: 80px;">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/78c8744d-630f-490f-a512-842493347a94.png" alt="Cute cartoon cat with birthday hat blowing kisses vector illustration" />
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>This site is just for one special person </p>
+        </div>
+    </div>
+     <audio id="song" preload="auto" loop>
+        <source src="monokrom-tulus.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Music player functionality
+            const song = document.getElementById('song');
+            const playBtn = document.getElementById('play-btn');
+            let isPlaying = false;
+            
+            playBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    song.pause();
+                    playBtn.textContent = '▶';
+                } else {
+                    song.play();
+                    playBtn.textContent = '❚❚';
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            document.body.addEventListener('click', function(e) {
+                createHeart(e.clientX, e.clientY);
+            });
+            
+            document.body.addEventListener('touchstart', function(e) {
+                const touch = e.touches[0];
+                createHeart(touch.clientX, touch.clientY);
+            });
+            
+            function createHeart(x, y) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                document.getElementById('hearts-container').appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+    
+            for (let i = 0; i < 10; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'rose-decoration';
+                rose.innerHTML = '🌹';
+                rose.style.left = Math.random() * window.innerWidth + 'px';
+                rose.style.top = Math.random() * window.innerHeight + 'px';
+                rose.style.fontSize = (20 + Math.random() * 30) + 'px';
+                rose.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(rose);
+            }
+            for (let i = 0; i < 10; i++){
+                const love = document.createElement('div');
+                love.classname = 'love';
+                love.innerHTML = '❤️';
+                love.style.left = Math.random() * window.innerWidth + 'px';
+                love.style.top = Math.random() * window.innerHeight + 'px';
+                love.style.fontSize = (20 + Math.random() * 30) + 'px';
+                love.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(love);
+            }
+            
+            let startY = 0;
+            document.addEventListener('touchstart', function(e) {
+                startY = e.touches[0].clientY;
+            }, {passive: true});
+            
+            document.addEventListener('touchmove', function(e) {
+                const y = e.touches[0].clientY;
+                const diff = startY - y;
+                window.scrollBy(0, diff);
+                startY = y;
+            }, {passive: true});
+        
+            setInterval(() => {
+                const cats = document.querySelectorAll('.cat-meme');
+                cats.forEach(cat => {
+                    cat.style.animation = 'none';
+                    setTimeout(() => {
+                        cat.style.animation = 'float 3s ease-in-out infinite';
+                    }, 10);
+                });
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
+
